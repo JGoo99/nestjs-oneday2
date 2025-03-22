@@ -12,7 +12,7 @@ export class AuthService {
     return await this.userService.createUser(createUserDto);
   }
 
-  async signInUser(loginUserDto: LoginUserDto): Promise<User> {
+  async validateUser(loginUserDto: LoginUserDto): Promise<User> {
     const user = await this.userService.getUserByEmail(loginUserDto.email);
     const isPasswordMatched = await user.checkPassword(loginUserDto.password);
     if (!isPasswordMatched) {
